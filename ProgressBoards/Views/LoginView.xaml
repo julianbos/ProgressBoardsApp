@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ProgressBoards.ViewModels"
+             x:Class="ProgressBoards.Views.LoginView"
+             x:DataType="vm:LoginViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="#F9F9F9">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center">
+
+            <Label Text="Welcome to ProgressBoards!" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   TextColor="#333333"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Please login or register." 
+                   FontSize="16"
+                   TextColor="#333333"
+                   HorizontalOptions="Center"
+                   Margin="0,10" />
+
+            <Label Text="Email" FontSize="16" TextColor="#333333"/>
+            <Entry Placeholder="Enter your email" 
+                   Text="{Binding Email}"
+                   Keyboard="Email"
+                   FontSize="16"
+                   PlaceholderColor="#666666"
+                   TextColor="#333333"
+                   BackgroundColor="#FFFFFF"
+                   WidthRequest="400"
+                   Margin="0,0,0,10"/>
+
+            <Label Text="Password" FontSize="16" TextColor="#333333"/>
+            <Entry Placeholder="Enter your password" 
+                   Text="{Binding Password}"
+                   IsPassword="True"
+                   FontSize="16"
+                   PlaceholderColor="#666666"
+                   TextColor="#333333"
+                   BackgroundColor="#FFFFFF"
+                   WidthRequest="400"
+                   Margin="0,0,0,10"/>
+
+            <ActivityIndicator HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               IsRunning="{Binding IsBusy}" 
+                               IsVisible="{Binding IsBusy}" 
+                               HeightRequest="50"
+                               WidthRequest="50"
+                               Margin="0,0,0,10" />
+
+            <HorizontalStackLayout>
+                <Button Text="Login" 
+                        Command="{Binding LoginCommand}"
+                        BackgroundColor="#007ACC"
+                        TextColor="#FFFFFF"
+                        FontSize="16"
+                        WidthRequest="150"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Margin="0,10,5,0"/>
+
+                <Button Text="Register" 
+                        Command="{Binding GoToRegisterCommand}"
+                        BackgroundColor="#FF3B30"
+                        TextColor="#FFFFFF"
+                        FontSize="16"
+                        WidthRequest="150"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Margin="5,10,0,0"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgressBoards", "ProgressBoards.csproj", "{1317D00A-0B4E-48B2-85C0-CE5DC5F46DB2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF8406B3-AA3B-4728-940A-ED09D6AFB252} = {BF8406B3-AA3B-4728-940A-ED09D6AFB252}
+		{D5715660-6532-4FB4-BFEA-CBB2F68E6F42} = {D5715660-6532-4FB4-BFEA-CBB2F68E6F42}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgressBoardsApi", "..\ProgressBoardsApi\ProgressBoardsApi.csproj", "{A5DF3FEF-72A7-41F6-9E81-FC1EF918C750}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF8406B3-AA3B-4728-940A-ED09D6AFB252} = {BF8406B3-AA3B-4728-940A-ED09D6AFB252}
+		{D5715660-6532-4FB4-BFEA-CBB2F68E6F42} = {D5715660-6532-4FB4-BFEA-CBB2F68E6F42}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgressBoardsServices", "..\ProgressBoardsServices\ProgressBoardsServices.csproj", "{D5715660-6532-4FB4-BFEA-CBB2F68E6F42}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF8406B3-AA3B-4728-940A-ED09D6AFB252} = {BF8406B3-AA3B-4728-940A-ED09D6AFB252}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgressBoardsData", "..\ProgressBoardsData\ProgressBoardsData.csproj", "{BF8406B3-AA3B-4728-940A-ED09D6AFB252}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgressBoardsShared", "..\ProgressBoardsShared\ProgressBoardsShared.csproj", "{C1CD0953-39A4-4F32-9BA1-7CEB686C960F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1317D00A-0B4E-48B2-85C0-CE5DC5F46DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1317D00A-0B4E-48B2-85C0-CE5DC5F46DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1317D00A-0B4E-48B2-85C0-CE5DC5F46DB2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1317D00A-0B4E-48B2-85C0-CE5DC5F46DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1317D00A-0B4E-48B2-85C0-CE5DC5F46DB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1317D00A-0B4E-48B2-85C0-CE5DC5F46DB2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A5DF3FEF-72A7-41F6-9E81-FC1EF918C750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5DF3FEF-72A7-41F6-9E81-FC1EF918C750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5DF3FEF-72A7-41F6-9E81-FC1EF918C750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5DF3FEF-72A7-41F6-9E81-FC1EF918C750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5715660-6532-4FB4-BFEA-CBB2F68E6F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5715660-6532-4FB4-BFEA-CBB2F68E6F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5715660-6532-4FB4-BFEA-CBB2F68E6F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5715660-6532-4FB4-BFEA-CBB2F68E6F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF8406B3-AA3B-4728-940A-ED09D6AFB252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF8406B3-AA3B-4728-940A-ED09D6AFB252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF8406B3-AA3B-4728-940A-ED09D6AFB252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF8406B3-AA3B-4728-940A-ED09D6AFB252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1CD0953-39A4-4F32-9BA1-7CEB686C960F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1CD0953-39A4-4F32-9BA1-7CEB686C960F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1CD0953-39A4-4F32-9BA1-7CEB686C960F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1CD0953-39A4-4F32-9BA1-7CEB686C960F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54A95AD0-CB13-4249-B53F-E7C7E652691E}
+	EndGlobalSection
+EndGlobal

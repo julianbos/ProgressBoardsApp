@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProgressBoards.Views.TaskListView"
+             xmlns:viewModels="clr-namespace:ProgressBoards.ViewModels"
+             xmlns:models="clr-namespace:ProgressBoardsShared.Dtos;assembly=ProgressBoardsShared"
+             xmlns:vm="clr-namespace:ProgressBoards.ViewModels"
+             xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+             x:DataType="vm:TaskListViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="#F9F9F9">
+
+    <Grid Margin="10"
+          RowDefinitions="Auto, *"
+          RowSpacing="10">
+
+        <Grid Grid.Row="1" ColumnDefinitions="*, *, *"
+              ColumnSpacing="10">
+
+            <Frame CornerRadius="10"
+                   Padding="15"
+                   BorderColor="#E0E0E0"
+                   BackgroundColor="#FFFFFF"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Todo"
+                           FontSize="18"
+                           TextColor="#333333"
+                           FontAttributes="Bold" />
+                    <CollectionView ItemsSource="{Binding ToDoTasks}"
+                                    SelectedItem="{Binding SelectedTask, Mode=TwoWay}"
+                                    SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:TaskDto">
+                                <Frame CornerRadius="8"
+                                       Padding="12"
+                                       Margin="0, 5, 0, 5"
+                                       BorderColor="#E0E0E0"
+                                       BackgroundColor="#FFFFFF">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Title}"
+                                               FontSize="16"
+                                               TextColor="#333333"
+                                               LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding Description}"
+                                               FontSize="12"
+                                               TextColor="#666666"
+                                               LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding DueDate, StringFormat='Due: {0:MM/dd/yyyy}'}"
+                                               FontSize="12"
+                                               TextColor="#666666" />
+                                    </VerticalStackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <DragGestureRecognizer DragStartingCommand="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:TaskListViewModel}},Path=DragStartedCommand}"
+                                                               DragStartingCommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer NumberOfTapsRequired="2"
+                                                              CommandParameter="{Binding .}"
+                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TaskListViewModel}}, Path=GoToEditTaskCommand}" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <Frame.GestureRecognizers>
+                    <DropGestureRecognizer DropCommand="{Binding TaskDroppedCommand}" DropCommandParameter="0" />
+                </Frame.GestureRecognizers>
+
+            </Frame>
+
+            <Frame CornerRadius="10"
+                   Padding="15"
+                   BorderColor="#E0E0E0"
+                   BackgroundColor="#FFFFFF"
+                   HasShadow="True"
+                   Grid.Column="1">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Doing"
+                           FontSize="18"
+                           TextColor="#333333"
+                           FontAttributes="Bold" />
+                    <CollectionView ItemsSource="{Binding DoingTasks}"
+                                    SelectedItem="{Binding SelectedTask}"
+                                    SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:TaskDto">
+                                <Frame CornerRadius="8"
+                                       Padding="12"
+                                       Margin="0, 5, 0, 5"
+                                       BorderColor="#E0E0E0"
+                                       BackgroundColor="#FFFFFF">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Title}"
+                                               FontSize="16"
+                                               TextColor="#333333"
+                                               LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding Description}"
+                                               FontSize="12"
+                                               TextColor="#666666"
+                                               LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding DueDate, StringFormat='Due: {0:MM/dd/yyyy}'}"
+                                               FontSize="12"
+                                               TextColor="#666666" />
+                                    </VerticalStackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <DragGestureRecognizer DragStartingCommand="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:TaskListViewModel}},Path=DragStartedCommand}"
+                                                               DragStartingCommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer NumberOfTapsRequired="2"
+                                                              CommandParameter="{Binding .}"
+                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TaskListViewModel}}, Path=GoToEditTaskCommand}" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <Frame.GestureRecognizers>
+                    <DropGestureRecognizer DropCommand="{Binding TaskDroppedCommand}" DropCommandParameter="1" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame CornerRadius="10"
+                   Padding="15"
+                   BorderColor="#E0E0E0"
+                   BackgroundColor="#FFFFFF"
+                   HasShadow="True"
+                   Grid.Column="2">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Done"
+                           FontSize="18"
+                           TextColor="#333333"
+                           FontAttributes="Bold" />
+                    <CollectionView ItemsSource="{Binding DoneTasks}"
+                                    SelectedItem="{Binding SelectedTask}"
+                                    SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:TaskDto">
+                                <Frame CornerRadius="8"
+                                       Padding="12"
+                                       Margin="0, 5, 0, 5"
+                                       BorderColor="#E0E0E0"
+                                       BackgroundColor="#FFFFFF">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Title}"
+                                               FontSize="16"
+                                               TextColor="#333333"
+                                               LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding Description}"
+                                               FontSize="12"
+                                               TextColor="#666666"
+                                               LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding DueDate, StringFormat='Due: {0:MM/dd/yyyy}'}"
+                                               FontSize="12"
+                                               TextColor="#666666" />
+                                    </VerticalStackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <DragGestureRecognizer DragStartingCommand="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:TaskListViewModel}},Path=DragStartedCommand}"
+                                                               DragStartingCommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer NumberOfTapsRequired="2"
+                                                              CommandParameter="{Binding .}"
+                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TaskListViewModel}}, Path=GoToEditTaskCommand}" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <Frame.GestureRecognizers>
+                    <DropGestureRecognizer DropCommand="{Binding TaskDroppedCommand}" DropCommandParameter="2" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
+
+        <Button Grid.Row="2"
+                Text="{x:Static fa:Solid.Plus}"
+                FontFamily="FASolid"
+                FontSize="Medium"
+                BackgroundColor="#007ACC"
+                TextColor="#FFFFFF"
+                CornerRadius="30"
+                HeightRequest="60"
+                WidthRequest="60"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="0,0,0,10"
+                Command="{Binding GoToAddTaskCommand}" />
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}"
+                           Color="#007ACC"
+                           Grid.RowSpan="3"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand" />
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProgressBoards.Views.ProjectListView"
+             xmlns:vm="clr-namespace:ProgressBoards.ViewModels"
+             xmlns:model="clr-namespace:ProgressBoardsData.Models;assembly=ProgressBoardsData"
+             xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+             x:DataType="vm:ProjectListViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="#F9F9F9">
+
+    <Grid Margin="10"
+          RowDefinitions="*,Auto"
+          RowSpacing="10">
+
+        <CollectionView ItemsSource="{Binding Projects}"
+                        SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                        SelectionChangedCommand="{Binding GoToTasksCommand}"
+                        SelectionMode="Single"
+                        BackgroundColor="Transparent">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Project">
+                    <Frame CornerRadius="8" 
+                           Padding="12" 
+                           Margin="5" 
+                           BorderColor="#E0E0E0"
+                           BackgroundColor="#FFFFFF"
+                           HasShadow="True">
+
+                        <Grid ColumnDefinitions="*, Auto"
+                              RowDefinitions="Auto, Auto, Auto"
+                              RowSpacing="4">
+
+                            <Label Grid.ColumnSpan="2"
+                                   Text="{Binding Name}"
+                                   FontSize="16"
+                                   TextColor="#333333"
+                                   FontAttributes="Bold" />
+
+                            <Label Grid.Row="1"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding Description}"
+                                   FontSize="12"
+                                   TextColor="#666666"
+                                   Opacity="0.8"
+                                   MaxLines="2" />
+
+                            <StackLayout Grid.Row="2"
+                                         Grid.Column="0"
+                                         Orientation="Horizontal"
+                                         Spacing="10">
+                                <Label Text="{Binding ProjectUsers.Count, StringFormat='Users: {0:F0}'}"
+                                       FontSize="12"
+                                       TextColor="#333333" />
+                                <Label Text="{Binding Tasks.Count, StringFormat='Tasks: {0:F0}'}"
+                                       TextColor="#333333" />
+                            </StackLayout>
+
+                            <Button Grid.Column="1"
+                                    Text="{x:Static fa:Solid.Pencil}"
+                                    FontFamily="FASolid"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#007ACC"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProjectListViewModel}}, Path=GoToEditProjectCommand}"
+                                    CommandParameter="{Binding .}"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="1"
+                Text="{x:Static fa:Solid.Plus}"
+                FontFamily="FASolid"
+                FontSize="Medium"
+                BackgroundColor="#007ACC"
+                TextColor="#FFFFFF"
+                CornerRadius="30"
+                HeightRequest="60"
+                WidthRequest="60"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="0,0,0,10"
+                Command="{Binding GoToAddProjectCommand}"/>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}"
+                           Color="#007ACC"
+                           Grid.RowSpan="2"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"/>
+    </Grid>
+</ContentPage>

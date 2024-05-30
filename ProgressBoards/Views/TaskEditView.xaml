@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ProgressBoards.ViewModels"
+             x:Class="ProgressBoards.Views.TaskEditView"
+             x:DataType="vm:TaskEditViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="#F9F9F9">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center">
+
+            <Label Text="Title" FontSize="16" TextColor="#333333"/>
+            <Entry Text="{Binding SelectedTask.Title}"
+                   Placeholder="Enter task title"
+                   FontSize="16"
+                   PlaceholderColor="#666666"
+                   TextColor="#333333"
+                   BackgroundColor="#FFFFFF"
+                   WidthRequest="400"
+                   Margin="0,0,0,10"/>
+
+            <Label Text="Description" FontSize="16" TextColor="#333333"/>
+            <Editor Text="{Binding SelectedTask.Description}"
+                    Placeholder="Enter task description"
+                    FontSize="16"
+                    PlaceholderColor="#666666"
+                    TextColor="#333333"
+                    BackgroundColor="#FFFFFF"
+                    HeightRequest="100"
+                    WidthRequest="400"
+                    Margin="0,0,0,10"/>
+
+            <Label Text="Assignee" FontSize="16" TextColor="#333333"/>
+            <Picker ItemsSource="{Binding ProjectUsers}"
+                    SelectedItem="{Binding SelectedUser, Mode=TwoWay}"
+                    ItemDisplayBinding="{Binding Email}"
+                    FontSize="16"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#333333"
+                    WidthRequest="400"
+                    Margin="0,0,0,10"/>
+
+            <Label Text="Due Date" FontSize="16" TextColor="#333333"/>
+            <DatePicker Date="{Binding SelectedTask.DueDate, Mode=TwoWay}"
+                        Format="dd/MM/yyyy"
+                        FontSize="16"
+                        BackgroundColor="#FFFFFF"
+                        TextColor="#333333"
+                        WidthRequest="400"
+                        Margin="0,0,0,10"/>
+
+            <HorizontalStackLayout>
+                <Button Text="Save" 
+                        Command="{Binding SaveTaskCommand}"
+                        BackgroundColor="#007ACC"
+                        TextColor="#FFFFFF"
+                        FontSize="16"
+                        WidthRequest="150"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Margin="0,10,5,0"/>
+
+                <Button Text="Delete" 
+                        Command="{Binding DeleteTaskCommand}"
+                        BackgroundColor="#FF3B30"
+                        TextColor="#FFFFFF"
+                        FontSize="16"
+                        WidthRequest="150"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Margin="5,10,0,0"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

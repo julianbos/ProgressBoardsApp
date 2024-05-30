@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ProgressBoards.ViewModels"
+             x:Class="ProgressBoards.Views.TaskAddView"
+             x:DataType="vm:TaskAddViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="#F9F9F9">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center">
+
+            <Label Text="Title" FontSize="16" TextColor="#333333"/>
+            <Entry Text="{Binding Title}"
+                   Placeholder="Enter task title"
+                   FontSize="16"
+                   PlaceholderColor="#666666"
+                   TextColor="#333333"
+                   BackgroundColor="#FFFFFF"
+                   WidthRequest="400"
+                   Margin="0,0,0,10"/>
+
+            <Label Text="Description" FontSize="16" TextColor="#333333"/>
+            <Editor Text="{Binding Description}"
+                    Placeholder="Enter task description"
+                    FontSize="16"
+                    PlaceholderColor="#666666"
+                    TextColor="#333333"
+                    BackgroundColor="#FFFFFF"
+                    HeightRequest="100"
+                    WidthRequest="400"
+                    Margin="0,0,0,10"/>
+
+            <Label Text="Assignee" FontSize="16" TextColor="#333333"/>
+            <Picker ItemsSource="{Binding ProjectUsers}"
+                    ItemDisplayBinding="{Binding Email}"
+                    FontSize="16"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#333333"
+                    WidthRequest="400"
+                    Margin="0,0,0,10"/>
+
+            <Label Text="Status" FontSize="16" TextColor="#333333"/>
+            <Picker SelectedItem="{Binding Status, Mode=TwoWay}"
+                    FontSize="16"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#333333"
+                    WidthRequest="400"
+                    Margin="0,0,0,10">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>TODO</x:String>
+                        <x:String>DOING</x:String>
+                        <x:String>DONE</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Due Date" FontSize="16" TextColor="#333333"/>
+            <DatePicker Date="{Binding DueDate, Mode=TwoWay}"
+                        Format="dd/MM/yyyy"
+                        FontSize="16"
+                        TextColor="#333333"
+                        WidthRequest="400"
+                        Margin="0,0,0,10"/>
+
+            <HorizontalStackLayout>
+                <Button Text="Save" 
+                        Command="{Binding SaveTaskCommand}"
+                        BackgroundColor="#007ACC"
+                        TextColor="#FFFFFF"
+                        FontSize="16"
+                        WidthRequest="150"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Margin="0,10,5,0"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

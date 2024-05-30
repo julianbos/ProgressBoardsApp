@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Dtos\**" />
+    <EmbeddedResource Remove="Dtos\**" />
+    <None Remove="Dtos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Implementations\CurrentUserService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProgressBoardsClient\ProgressBoardsShared.csproj" />
+    <ProjectReference Include="..\ProgressBoardsData\ProgressBoards.Data.csproj" />
+    <ProjectReference Include="..\ProgressBoardsShared\ProgressBoardsShared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ProgressBoards.ViewModels"
+             xmlns:model="ProgressBoardsData.Models"
+             x:DataType="vm:ProjectEditViewModel"
+             x:Class="ProgressBoards.Views.ProjectEditView"
+             Title="{Binding Title}"
+             BackgroundColor="#F9F9F9">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center">
+
+            <Label Text="Project Name" FontSize="16" TextColor="#333333"/>
+            <Entry Text="{Binding SelectedProject.Name}"
+                   Placeholder="Enter project title"
+                   FontSize="16"
+                   TextColor="#333333"
+                   BackgroundColor="#FFFFFF"
+                   WidthRequest="400"
+                   Margin="0,0,0,10"/>
+
+            <Label Text="Project Description" FontSize="16" TextColor="#333333"/>
+            <Editor Text="{Binding SelectedProject.Description}"
+                    Placeholder="Enter project description"
+                    FontSize="16"
+                    TextColor="#333333"
+                    BackgroundColor="#FFFFFF"
+                    HeightRequest="100"
+                    WidthRequest="400"
+                    Margin="0,0,0,10"/>
+
+            <Label Text="Add Project Users" FontSize="16" TextColor="#333333"/>
+            <Entry Placeholder="Enter email and press Enter"
+                   Text="{Binding EmailInput}"
+                   TextColor="#333333"
+                   BackgroundColor="#FFFFFF" 
+                   ReturnCommand="{Binding AddEmailsCommand}"
+                   WidthRequest="400"
+                   Margin="0,0,0,10"/>
+            <CollectionView ItemsSource="{Binding Emails}"
+                            ItemsLayout="HorizontalList"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            HorizontalScrollBarVisibility="Always">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="4"
+                               Margin="2"
+                               CornerRadius="10"
+                               BackgroundColor="#FFFFFF"
+                               BorderColor="#FFFFFF"
+                               HasShadow="True"
+                               WidthRequest="200"
+                               HorizontalOptions="Start">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding .}"
+                                       VerticalOptions="Center"
+                                       FontSize="14"
+                                       TextColor="#333333"/>
+                                <Button Text="X"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProjectEditViewModel}}, Path=RemoveEmailCommand}"
+                                        CommandParameter="{Binding .}"
+                                        FontSize="12"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#FF0000"
+                                        Margin="10,0,0,0"/>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <HorizontalStackLayout>
+                <Button Text="Save" 
+                        Command="{Binding SaveProjectCommand}"
+                        BackgroundColor="#007ACC"
+                        TextColor="#FFFFFF"
+                        FontSize="16"
+                        WidthRequest="150"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Margin="0,10,5,0"/>
+                <Button Text="Delete" 
+                        Command="{Binding DeleteProjectCommand}"
+                        BackgroundColor="#FF3B30"
+                        TextColor="#FFFFFF"
+                        FontSize="16"
+                        WidthRequest="150"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Margin="5,10,0,0"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
