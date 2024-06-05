@@ -1,11 +1,11 @@
-using ProgressBoardsServices.Implementations;
-using ProgressBoardsServices.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using ProgressBoardsData;
+using ProgressBoardsServices.Interfaces;
+using ProgressBoardsServices.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +32,13 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddControllers();
 
+builder.Services.AddSingleton<IEmailService>(sp => new EmailService(
+	smtpServer: "sandbox.smtp.mailtrap.io",
+	smtpPort: 587,
+	fromEmail: "noreply@progressboards.nl",
+	smtpUser: "988ad0699b76e6",
+	smtpPass: "fff62bdae66436"
+));
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
