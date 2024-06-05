@@ -36,7 +36,7 @@ namespace ProgressBoardsApi.Controllers
 		{
 			try
 			{
-				var task = await _taskService.GetTasksAsync(taskId);
+				var task = await _taskService.GetTaskAsync(taskId);
 
 				if (task == null)
 					return NotFound("Task not found.");
