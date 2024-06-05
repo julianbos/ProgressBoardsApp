@@ -3,7 +3,6 @@ using ProgressBoardsData.Models;
 using ProgressBoardsServices.Interfaces;
 using ProgressBoardsShared.Dtos;
 using Microsoft.EntityFrameworkCore;
-using ProgressBoardsData;
 
 namespace ProgressBoardsServices.Implementations
 {

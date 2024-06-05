@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using ProgressBoardsData;
 using ProgressBoardsShared.Dtos;
 using ProgressBoardsServices.Interfaces;
-using ProgressBoardsData;
 using ProgressBoardsData.Models;
 
 namespace ProgressBoardsServices.Implementations
