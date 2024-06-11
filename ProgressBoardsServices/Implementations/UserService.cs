@@ -46,44 +46,6 @@ namespace ProgressBoardsServices.Implementations
 			return user;
 		}
 
-		public async Task<UserDto> CreateUserAsync(UserDto userDto)
-		{
-			var user = new User
-			{
-				UserName = userDto.UserName,
-				Email = userDto.Email
-			};
-
-			await _context.Users.AddAsync(user);
-			_context.SaveChanges();
-
-			return new UserDto
-			{
-				UserId = user.UserId,
-				UserName = user.UserName,
-				Email = user.Email
-			};
-		}
-
-		public async Task<UserDto> EditUserAsync(int userId, UserDto userDto)
-		{
-			var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
-
-			if (user == null) throw new KeyNotFoundException($"User with ID {userId} not found."); ;
-
-			user.UserName = userDto.UserName;
-			user.Email = userDto.Email;
-
-			_context.SaveChanges();
-
-			return new UserDto
-			{
-				UserId = user.UserId,
-				UserName = user.UserName,
-				Email = user.Email
-			};
-		}
-
 		public async Task<UserDto> GetUserByEmailAsync(string email)
 		{
 			var user = await _context.Users

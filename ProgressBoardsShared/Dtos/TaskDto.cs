@@ -12,10 +12,4 @@
 		public int ProjectId { get; set; }
 	}
 
-	public enum StatusDto
-	{
-		TODO,
-		DOING,
-		DONE
-	}
 }
