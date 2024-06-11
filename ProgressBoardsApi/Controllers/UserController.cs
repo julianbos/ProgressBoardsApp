@@ -42,43 +42,6 @@ namespace ProgressBoardsApi.Controllers
 			}
 		}
 
-		[HttpPost]
-		public async Task<IActionResult> CreateUserAsync([FromBody] UserDto userDto)
-		{
-			try
-			{
-				if (userDto == null)
-					return BadRequest("Invalid user data");
-
-				var createdUser = await _userService.CreateUserAsync(userDto);
-				return CreatedAtAction(nameof(GetUserAsync), new { userId = createdUser.UserId }, createdUser);
-			}
-			catch (Exception ex)
-			{
-				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal Server Error: {ex.Message}");
-			}
-		}
-
-		[HttpPut("{userId}")]
-		public async Task<IActionResult> EditUserAsync(int userId, [FromBody] UserDto userDto)
-		{
-			try
-			{
-				if (userDto == null)
-					return BadRequest("Invalid user data");
-
-				var editedUser = await _userService.EditUserAsync(userId, userDto);
-				if (editedUser == null)
-					return NotFound($"User with ID {userId} not found.");
-
-				return Ok(editedUser);
-			}
-			catch (Exception ex)
-			{
-				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal Server Error: {ex.Message}");
-			}
-		}
-
 		[HttpDelete("{userId}")]
 		public async Task<IActionResult> DeleteUserAsync(int userId)
 		{

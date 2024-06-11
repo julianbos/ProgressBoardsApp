@@ -48,7 +48,6 @@ namespace ProgressBoards
 					));
 
 					builder.Services.AddSingleton<INotificationService, NotificationService>();
-
 					builder.Services.AddSingleton<IAuthService, AuthService>();
 					builder.Services.AddSingleton<IProjectService, ProjectService>();
 					builder.Services.AddSingleton<ITaskService, TaskService>();
