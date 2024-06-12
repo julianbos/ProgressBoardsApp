@@ -116,11 +116,6 @@ namespace ProgressBoardsServices.Implementations
 
 			if(task != null)
 			{
-				if(task.AssignedUserId != null)
-				{
-					await _notificationService.NotifyTaskAssignmentAsync((int)task.AssignedUserId, task.Title);
-				}
-
 				_context.Tasks.Remove(task);
 				_context.SaveChanges();
 				return true;
