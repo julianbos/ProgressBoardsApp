@@ -17,7 +17,7 @@
                    FontSize="16"
                    TextColor="#333333"
                    BackgroundColor="#FFFFFF"
-                   WidthRequest="400"
+                   WidthRequest="300"
                    Margin="0,0,0,10"/>
 
             <Label Text="Project Description" FontSize="16" TextColor="#333333"/>
@@ -27,7 +27,7 @@
                     TextColor="#333333"
                     BackgroundColor="#FFFFFF"
                     HeightRequest="100"
-                    WidthRequest="400"
+                    WidthRequest="300"
                     Margin="0,0,0,10"/>
 
             <Label Text="Add Project Users" FontSize="16" TextColor="#333333"/>
@@ -36,7 +36,7 @@
                    TextColor="#333333"
                    BackgroundColor="#FFFFFF" 
                    ReturnCommand="{Binding AddEmailsCommand}"
-                   WidthRequest="400"
+                   WidthRequest="300"
                    Margin="0,0,0,10"/>
             <CollectionView ItemsSource="{Binding Emails}"
                             ItemsLayout="HorizontalList"

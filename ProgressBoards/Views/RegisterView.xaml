@@ -19,7 +19,7 @@
                    PlaceholderColor="#666666"
                    TextColor="#333333"
                    BackgroundColor="#FFFFFF"
-                   WidthRequest="400"
+                   WidthRequest="300"
                    Margin="0,0,0,10"/>
 
             <Label Text="Username" FontSize="16" TextColor="#333333"/>
@@ -29,7 +29,7 @@
                    PlaceholderColor="#666666"
                    TextColor="#333333"
                    BackgroundColor="#FFFFFF"
-                   WidthRequest="400"
+                   WidthRequest="300"
                    Margin="0,0,0,10"/>
 
             <Label Text="Password" FontSize="16" TextColor="#333333"/>
@@ -40,13 +40,13 @@
                    PlaceholderColor="#666666"
                    TextColor="#333333"
                    BackgroundColor="#FFFFFF"
-                   WidthRequest="400"
+                   WidthRequest="300"
                    Margin="0,0,0,10"/>
 
             <ProgressBar Progress="{Binding PasswordStrength, Mode=OneWay}" 
                          ProgressColor="{Binding PasswordStrengthColor}"
                          HeightRequest="10"
-                         WidthRequest="400"
+                         WidthRequest="300"
                          Margin="0,0,0,10"/>
 
             <Label Text="Confirm Password" FontSize="16" TextColor="#333333"/>
@@ -57,7 +57,7 @@
                    PlaceholderColor="#666666"
                    TextColor="#333333"
                    BackgroundColor="#FFFFFF"
-                   WidthRequest="400"
+                   WidthRequest="300"
                    Margin="0,0,0,10"/>
 
             <HorizontalStackLayout>
